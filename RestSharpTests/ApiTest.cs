@@ -13,7 +13,7 @@ namespace RestSharpTests
     public class ApiTest
     {
         private readonly RestClient _client;
-        private readonly Regex _oneToThreeDigits = new(@"\d{1,3}");
+        private readonly Regex _oneToThreeDigits = new(@"^\d{1,3}$");
         private readonly Regex _dateInISOFormat = new(@"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z$");
 
         public ApiTest()

@@ -1,10 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
-namespace RestSharpTests.Models
+namespace RestSharpTests.Models;
+
+public class ErrorResponse
 {
-    internal class ErrorResponse
-    {
-        [JsonProperty("error")]
-        public string Error { get; set; }
-    }
+    [JsonPropertyName("error")]
+    public string Error { get; set; }
 }

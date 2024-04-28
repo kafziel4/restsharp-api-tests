@@ -1,34 +1,27 @@
 name: RestSharp tests
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
 jobs:
   test-api:
     runs-on: ubuntu-latest
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      # Setup .NET
-      - uses: actions/setup-dotnet@v2
+      - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '6.0.x'
+          dotnet-version: '8.0.x'
 
-      # Run tests
-      - name: Test
+      - name: Run Tests
         run: dotnet test -l "html;LogFileName=index.html"
-      
-      # Upload the contents of reports directory to workspace
-      - name: Upload Reports
-        uses: actions/upload-artifact@v3.0.0
+
+      - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: RunReports
           path: RestSharpTests/TestResults
-          
-      # Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.3.3
+
+      - uses: JamesIves/github-pages-deploy-action@v4
         if: always()
         with:
           branch: gh-pages

@@ -2,8 +2,4 @@
 
 namespace RestSharpTests.Models.Users;
 
-public class SingleUser
-{
-    [JsonPropertyName("data")]
-    public UserData Data { get; set; }
-}
+public record SingleUser([property: JsonPropertyName("data")] UserData Data);

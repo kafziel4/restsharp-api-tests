@@ -2,11 +2,7 @@
 
 namespace RestSharpTests.Models.Users;
 
-public class UpdateUserRequest
-{
-    [JsonPropertyName("name")]
-    public string Name { get; set; }
-    
-    [JsonPropertyName("job")]
-    public string Job { get; set; }
-}
+public record UpdateUserRequest(
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("job")] string Job
+);

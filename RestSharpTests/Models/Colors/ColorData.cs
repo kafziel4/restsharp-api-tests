@@ -2,20 +2,10 @@
 
 namespace RestSharpTests.Models.Colors;
 
-public class ColorData
-{
-    [JsonPropertyName("id")]
-    public int Id { get; set; }
-    
-    [JsonPropertyName("name")]
-    public string Name { get; set; }
-    
-    [JsonPropertyName("year")]
-    public int Year { get; set; }
-    
-    [JsonPropertyName("color")]
-    public string Color { get; set; }
-    
-    [JsonPropertyName("pantone_value")]
-    public string PantoneValue { get; set; }
-}
+public record ColorData(
+    [property: JsonPropertyName("id")] int Id,
+    [property: JsonPropertyName("name")] string Name,
+    [property: JsonPropertyName("year")] int Year,
+    [property: JsonPropertyName("color")] string Color,
+    [property: JsonPropertyName("pantone_value")] string PantoneValue
+);

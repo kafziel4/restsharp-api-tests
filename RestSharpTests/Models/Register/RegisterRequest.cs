@@ -2,11 +2,7 @@
 
 namespace RestSharpTests.Models.Register;
 
-public class RegisterRequest
-{
-    [JsonPropertyName("email")]
-    public string Email { get; set; }
-    
-    [JsonPropertyName("password")]
-    public string Password { get; set; }
-}
+public record RegisterRequest(
+    [property: JsonPropertyName("email")] string Email,
+    [property: JsonPropertyName("password")] string? Password = null
+);

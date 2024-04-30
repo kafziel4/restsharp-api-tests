@@ -43,17 +43,15 @@ public class UsersTests
     public async Task GetUserForExistingUser_ShouldReturnStatusOK_AndUserData()
     {
         // Arrange
-        var expectedUResponse = new SingleUser
-        {
-            Data = new UserData
-            {
-                Id = 2,
-                Email = "janet.weaver@reqres.in",
-                FirstName = "Janet",
-                LastName = "Weaver",
-                Avatar = "https://reqres.in/img/faces/2-image.jpg"
-            }
-        };
+        var expectedUResponse = new SingleUser(
+            Data: new UserData(
+                Id: 2,
+                Email: "janet.weaver@reqres.in",
+                FirstName: "Janet",
+                LastName: "Weaver",
+                Avatar: "https://reqres.in/img/faces/2-image.jpg"
+            )
+        );
 
         // Act
         var response = await _reqResClient.GetSingleUserAsync(expectedUResponse.Data.Id);
@@ -83,12 +81,7 @@ public class UsersTests
     public async Task PostUserWithValidData_ShouldReturnStatusCreated_AndUserData()
     {
         // Arrange
-        var requestBody = new CreateUserRequest
-        {
-            Name = "morpheus",
-            Job = "leader"
-        };
-
+        var requestBody = new CreateUserRequest(Name: "morpheus", Job: "leader");
         var oneToThreeDigits = new Regex(@"^\d{1,3}$");
 
         // Act
@@ -108,11 +101,7 @@ public class UsersTests
     {
         // Arrange
         var id = 2;
-        var requestBody = new UpdateUserRequest
-        {
-            Name = "morpheus",
-            Job = "zion resident"
-        };
+        var requestBody = new UpdateUserRequest(Name: "morpheus", Job: "zion resident");
 
         // Act
         var response = await _reqResClient.PutUserAsync(id, requestBody);
@@ -130,11 +119,7 @@ public class UsersTests
     {
         // Arrange
         var id = 2;
-        var requestBody = new UpdateUserRequest
-        {
-            Name = "morpheus",
-            Job = "zion resident"
-        };
+        var requestBody = new UpdateUserRequest(Name: "morpheus", Job: "zion resident");
 
         // Act
         var response = await _reqResClient.PatchUserAsync(id, requestBody);

@@ -24,16 +24,8 @@ public class LoginTests
     public async Task PostLoginWithValidData_ShouldReturnStatusOK_AndLoginToken()
     {
         // Arrange
-        var requestBody = new LoginRequest
-        {
-            Email = "eve.holt@reqres.in",
-            Password = "pistol"
-        };
-
-        var expectedResponse = new LoginResponse
-        {
-            Token = "QpwL5tke4Pnpja7X4"
-        };
+        var requestBody = new LoginRequest(Email: "eve.holt@reqres.in", Password: "pistol");
+        var expectedResponse = new LoginResponse(Token: "QpwL5tke4Pnpja7X4");
 
         // Act
         var response = await _reqResClient.PostLoginAsync<LoginResponse>(requestBody);
@@ -48,15 +40,8 @@ public class LoginTests
     public async Task PostLoginWithMissingPassword_ShouldReturnStatusBadRequest_AndValidationError()
     {
         // Arrange
-        var requestBody = new LoginRequest
-        {
-            Email = "peter@klaven"
-        };
-
-        var expectedResponse = new ErrorResponse
-        {
-            Error = "Missing password"
-        };
+        var requestBody = new LoginRequest(Email: "peter@klaven");
+        var expectedResponse = new ErrorResponse(Error: "Missing password");
 
         // Act
         var response = await _reqResClient.PostLoginAsync<ErrorResponse>(requestBody);

@@ -2,11 +2,8 @@
 
 namespace RestSharpTests.Models.Login;
 
-public class LoginRequest
-{
-    [JsonPropertyName("email")]
-    public string Email { get; set; }
-    
-    [JsonPropertyName("password")]
-    public string Password { get; set; }
-}
+public record LoginRequest(
+    [property: JsonPropertyName("email")] string Email,
+    [property: JsonPropertyName("password")] string? Password = null
+);
+

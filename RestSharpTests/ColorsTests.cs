@@ -39,17 +39,15 @@ public class ColorsTests
     public async Task GetColorForExistingColor_ShouldReturnStatusOK_AndColorData()
     {
         // Arrange
-        var expectedResponse = new SingleColor
-        {
-            Data = new ColorData
-            {
-                Id = 2,
-                Name = "fuchsia rose",
-                Year = 2001,
-                Color = "#C74375",
-                PantoneValue = "17-2031"
-            }
-        };
+        var expectedResponse = new SingleColor(
+            Data: new ColorData(
+                Id: 2, 
+                Name: "fuchsia rose", 
+                Year: 2001,
+                Color: "#C74375", 
+                PantoneValue: "17-2031"
+            )
+        );
 
         // Act
         var response = await _reqResClient.GetSingleColorAsync(expectedResponse.Data.Id);

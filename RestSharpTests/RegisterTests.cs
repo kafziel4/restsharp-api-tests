@@ -24,17 +24,8 @@ public class RegisterTests
     public async Task PostRegisterWithValidData_ShouldReturnStatusOK_AndRegistrationId_AndToken()
     {
         // Arrange
-        var requestBody = new RegisterRequest
-        {
-            Email = "eve.holt@reqres.in",
-            Password = "pistol"
-        };
-
-        var expectedResponse = new RegisterResponse
-        {
-            Id = 4,
-            Token = "QpwL5tke4Pnpja7X4"
-        };
+        var requestBody = new RegisterRequest(Email: "eve.holt@reqres.in", Password: "pistol");
+        var expectedResponse = new RegisterResponse(Id: 4, Token: "QpwL5tke4Pnpja7X4");
 
         // Act
         var response = await _reqResClient.PostRegisterAsync<RegisterResponse>(requestBody);
@@ -49,15 +40,8 @@ public class RegisterTests
     public async Task PostRegisterWithMissingPassword_ShouldReturnStatusBadRequest_AndValidationError()
     {
         // Arrange
-        var requestBody = new RegisterRequest
-        {
-            Email = "sydney@fife"
-        };
-
-        var expectedResponse = new ErrorResponse
-        {
-            Error = "Missing password"
-        };
+        var requestBody = new RegisterRequest(Email: "sydney@fife");
+        var expectedResponse = new ErrorResponse(Error: "Missing password");
 
         // Act
         var response = await _reqResClient.PostRegisterAsync<ErrorResponse>(requestBody);

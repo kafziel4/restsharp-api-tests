@@ -2,8 +2,4 @@
 
 namespace RestSharpTests.Models;
 
-public class ErrorResponse
-{
-    [JsonPropertyName("error")]
-    public string Error { get; set; }
-}
+public record ErrorResponse([property: JsonPropertyName("error")] string Error);

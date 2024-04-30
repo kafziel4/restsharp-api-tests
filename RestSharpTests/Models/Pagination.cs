@@ -2,17 +2,9 @@
 
 namespace RestSharpTests.Models;
 
-public class Pagination
-{
-    [JsonPropertyName("page")]
-    public int Page { get; set; }
-    
-    [JsonPropertyName("per_page")]
-    public int PerPage { get; set; }
-    
-    [JsonPropertyName("total")]
-    public int Total { get; set; }
-    
-    [JsonPropertyName("total_pages")]
-    public int TotalPages { get; set; }
-}
+public record Pagination(
+    [property: JsonPropertyName("page")] int Page,
+    [property: JsonPropertyName("per_page")] int PerPage,
+    [property: JsonPropertyName("total")] int Total,
+    [property: JsonPropertyName("total_pages")] int TotalPages
+);

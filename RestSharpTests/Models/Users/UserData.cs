@@ -2,20 +2,10 @@
 
 namespace RestSharpTests.Models.Users;
 
-public class UserData
-{
-    [JsonPropertyName("id")]
-    public int Id { get; set; }
-    
-    [JsonPropertyName("email")]
-    public string Email { get; set; }
-    
-    [JsonPropertyName("first_name")]
-    public string FirstName { get; set; }
-    
-    [JsonPropertyName("last_name")]
-    public string LastName { get; set; }
-    
-    [JsonPropertyName("avatar")]
-    public string Avatar { get; set; }
-}
+public record UserData(
+    [property: JsonPropertyName("id")] int Id,
+    [property: JsonPropertyName("email")] string Email,
+    [property: JsonPropertyName("first_name")] string FirstName,
+    [property: JsonPropertyName("last_name")] string LastName,
+    [property: JsonPropertyName("avatar")] string Avatar
+);

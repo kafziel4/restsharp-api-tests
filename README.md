@@ -20,6 +20,6 @@ A workflow is set up to install .NET, run the tests, and publish the HTML report
 ## How to run it
 
 - Install [.NET](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-- Run the tests and generate the report:: `dotnet test -l "html;LogFileName=index.html"`
+- Run the tests and generate the report: `dotnet test -l "html;LogFileName=index.html"`
 
-![jest](assets/test.gif)
+![dotnet](assets/test.gif)
